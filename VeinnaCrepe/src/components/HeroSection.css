@@ -1,0 +1,273 @@
+.hero-section {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 30% 50%, #0f2040 0%, #080e1a 50%, #000 100%);
+}
+
+.hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, transparent 0%, rgba(8, 14, 26, 0.4) 50%, var(--bg-dark) 100%);
+}
+
+.hero-canvas-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero-canvas-wrapper canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  max-width: 900px;
+  width: 100%;
+}
+
+.hero-logo-wrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.hero-logo-ring {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--accent), transparent, var(--accent), transparent, var(--accent));
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.hero-logo {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 60px var(--accent-glow), 0 0 120px rgba(42, 74, 138, 0.3);
+}
+
+.hero-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  line-height: 1.1;
+  perspective: 600px;
+  direction: ltr;
+  background: linear-gradient(135deg, var(--accent-light), var(--accent), var(--white));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subheadline {
+  font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 2.5rem;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-cta-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #0a1628;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  border: none;
+  transition: all 0.3s;
+  box-shadow: 0 4px 25px var(--accent-glow);
+  cursor: pointer;
+}
+
+.hero-cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(212, 175, 55, 0.4);
+}
+
+.hero-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--white);
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.3s;
+  cursor: pointer;
+  animation: shadowPulse 2s ease-in-out infinite;
+}
+
+.hero-cta-secondary:hover {
+  border-color: var(--accent);
+  background: rgba(212, 175, 55, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(212, 175, 55, 0.25);
+}
+
+.hero-cta-secondary:active {
+  transform: scale(0.95);
+}
+
+@keyframes shadowPulse {
+  0%, 100% { box-shadow: 0 0 0 rgba(212, 175, 55, 0.6); }
+  50% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.9); }
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.7rem;
+  animation: float 2s ease-in-out infinite;
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
+
+.hero-floating-badge {
+  position: absolute;
+  z-index: 2;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+/* Decorative crepe circles */
+.hero-crepe-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(210, 180, 140, 0.06);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-crepe-circle:nth-child(1) {
+  width: 120px;
+  height: 120px;
+  top: 5%;
+  right: 10%;
+  animation: crepePulse 2s ease-in-out infinite;
+}
+
+.hero-crepe-circle:nth-child(2) {
+  width: 80px;
+  height: 80px;
+  top: 12%;
+  right: 35%;
+  animation: crepePulse 2s ease-in-out infinite 0.4s;
+}
+
+.hero-crepe-circle:nth-child(3) {
+  width: 60px;
+  height: 60px;
+  top: 3%;
+  left: 20%;
+  animation: crepePulse 2s ease-in-out infinite 0.8s;
+}
+
+.hero-crepe-circle:nth-child(4) {
+  width: 100px;
+  height: 100px;
+  top: 8%;
+  left: 5%;
+  animation: crepePulse 2s ease-in-out infinite 0.2s;
+}
+
+.hero-crepe-circle:nth-child(5) {
+  width: 50px;
+  height: 50px;
+  top: 18%;
+  right: 20%;
+  animation: crepePulse 2s ease-in-out infinite 0.6s;
+}
+
+@keyframes crepePulse {
+  0%, 100% { transform: scale(0.95); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 0.85; }
+}
+
+/* Beige curved shape */
+.hero-beige-curve {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 100%, rgba(210, 180, 140, 0.04) 0%, transparent 70%);
+  animation: curveShift 3s ease-in-out infinite;
+}
+
+@keyframes curveShift {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.85; }
+}
+
+@media (max-width: 767px) {
+  .hero-logo { width: 85px; height: 85px; }
+  .hero-floating-badge { display: none; }
+  .hero-scroll-indicator { bottom: 1.5rem; }
+  .hero-crepe-circle:nth-child(1) { width: 80px; height: 80px; }
+  .hero-crepe-circle:nth-child(2) { width: 50px; height: 50px; }
+  .hero-crepe-circle:nth-child(3) { width: 40px; height: 40px; }
+  .hero-crepe-circle:nth-child(4) { width: 60px; height: 60px; }
+  .hero-crepe-circle:nth-child(5) { width: 30px; height: 30px; }
+}
