@@ -1,0 +1,7 @@
+{
+  "name": "veinna-crepe-deploy",
+  "private": true,
+  "scripts": {
+    "build": "cd VeinnaCrepe && npm ci && npm run build && mv dist ../dist"
+  }
+}
